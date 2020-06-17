@@ -6,7 +6,7 @@ module.exports = {
     name: 'avatar',
     category: 'info',
     description: 'Displays avatar',
-    usage: '[user]',
+    usage: '[ava]',
     run: async(bot, message, args) => {
         function getUserFromMention(mention) {
             if (!mention) return;

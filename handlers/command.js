@@ -1,5 +1,9 @@
+const Discord = require('discord.js');
 const { prefix } = require('../config.json');
 const { readdirSync } = require("fs");
+const bot = new Discord.Client();
+
+bot.aliases = new Discord.Collection();
 
 module.exports = (bot) => {
     readdirSync("./commands/").map(dir => {
