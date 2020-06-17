@@ -1,21 +1,22 @@
-const Discord = require('discord.js');
 const { prefix } = require('../config.json');
-const { readdirSync } = require("fs");
-const bot = new Discord.Client();
-
-bot.aliases = new Discord.Collection();
+const { readdir } = require("fs");
 
 module.exports = (bot) => {
-    readdirSync("./commands/").map(dir => {
-       const commands = readdirSync(`./commands/${dir}/`).map(cmd=>{
-           let pull = require(`../commands/${dir}/${cmd}`)
-           console.log(`Loaded command ${prefix}${pull.name}`)
-           bot.commands.set(pull.name,pull)
-           if(cmd.aliases){
-               cmd.aliases.forEach(p=>{
-                   bot.aliases.set(p,pull)
-               })
-           }
-       })
-    })
+    fs.readdir("./commands/", (err, files) => {
+
+        if(err) console.log(err)
+    
+        let jsfile = files.filter(f => f.split(".").pop() === "js") 
+        if(jsfile.length <= 0) {
+             return console.log("[LOGS] Couldn't Find Commands!");
+        }
+    
+        jsfile.forEach((f, i) => {
+            let pull = require(`./commands/${f}`);
+            bot.commands.set(pull.name, pull);  
+            pull.aliases.forEach(alias => {
+                bot.aliases.set(alias, pull.name)
+            });
+        });
+    });
 }
