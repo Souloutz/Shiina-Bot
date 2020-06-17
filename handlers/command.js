@@ -9,9 +9,9 @@ module.exports = (bot) => {
             bot.commands.set(pull.name,pull)
             if(cmd.aliases){
                 let pull = require(`./commands/${dir}/${f}`);
-                bot.commands.set(pull.config.name, pull);  
-                pull.config.aliases.forEach(alias => {
-                    bot.aliases.set(alias, pull.config.name)
+                bot.commands.set(pull.name, pull);  
+                pull.aliases.forEach(alias => {
+                    bot.aliases.set(alias, pull.name)
                 })
             }
         })
