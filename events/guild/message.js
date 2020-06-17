@@ -3,7 +3,7 @@ const {MessageEmbed} = require('discord.js');
 const {prefix} = require('../../config.json');
 const ms = require('ms');
 
-module.exports=async(bot,message)=>{
+module.exports=async(bot, message) => {
 
     if (message.author.bot) return;
     if (!message.content.toLowerCase().startsWith(prefix)) return;
