@@ -1,5 +1,5 @@
 const { prefix } = require('../config.json');
-const { readdir } = require("fs");
+const fs = require("fs");
 
 module.exports = (bot) => {
     fs.readdir("./commands/", (err, files) => {
