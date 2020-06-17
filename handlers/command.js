@@ -8,7 +8,7 @@ module.exports = (bot) => {
             console.log(`Loaded command ${prefix}${pull.name}`)
             bot.commands.set(pull.name,pull)
             if(cmd.aliases){
-                let pull = require(`./commands/${f}`);
+                let pull = require(`./commands/${dir}/${f}`);
                 bot.commands.set(pull.config.name, pull);  
                 pull.config.aliases.forEach(alias => {
                     bot.aliases.set(alias, pull.config.name)
