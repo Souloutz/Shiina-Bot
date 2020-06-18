@@ -15,7 +15,7 @@ module.exports = {
         const members = message.guild.members.cache
         const channels = message.guild.channels.cache
         const emojis = message.guild.emojis.cache
-        
+
         const Info = new MessageEmbed()
             .setDescription(`**Information for __${message.guild.name}__**`)
             .setColor(colors.peach)
@@ -24,7 +24,7 @@ module.exports = {
                 `**Name:** ${message.guild.name}`,
                 `**ID:** ${message.guild.id}`,
                 `**Owner:** ${message.guild.owner.user.tag} (${message.guild.ownerID})`,
-                `**Region:** ${regions[message.guild.regions]}`,
+                `**Region:** ${regions[message.guild.region]}`,
                 `**Boost Tier:** ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
                 `**Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}`,
                 `**Verification Level:** ${verificationLevels[message.guild.verificationLevel]}`,
