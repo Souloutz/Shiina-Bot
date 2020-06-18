@@ -36,7 +36,7 @@ function getAll(bot, message) {
 
         helpAll.setTitle('Command List')
         helpAll.setDescription(info)
-        helpAll.setFooter('Use the command s!help [role] to get more information about a role!')
+        helpAll.setFooter('Use the command s!help [command] to get more information about a command!')
     
     return message.channel.send(helpAll);
 }
