@@ -11,7 +11,7 @@ module.exports = {
     usage: '[user]',
     aliases: ["user"],
     run: async(bot, message, args) => {
-        const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.author;
+        const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
         const roles = member.roles.cache
             .sort((a, b) => b.position - a.position)
             .map(role => role.toString())
