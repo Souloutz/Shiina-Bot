@@ -78,7 +78,7 @@ module.exports = {
                 `**Offline:** ${members.filter(member => member.presence.status === 'offline').size}`,
                 `\u200b`
             ])
-            .addField(`Roles [${roles.length} - 1]`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None')
+            .addField(`**Roles [${roles.length} - 1]:**`, `${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None'}`,)
             .setFooter('Shiina | Developed by Souloutz#0038')
             .setTimestamp();
         return message.channel.send(Info);
