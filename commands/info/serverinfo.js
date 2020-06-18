@@ -71,10 +71,10 @@ module.exports = {
                 `\u200b`
             ])
             .addField('Presence', [
-                `**Online:** ${members.find(member => member.presence.status === 'online').size}`,
-                `**Idle:** ${members.find(member => member.presence.status === 'idle').size}`,
-                `**Do Not Disturb:** ${members.find(member => member.presence.status === 'dnd').size}`,
-                `**Offline:** ${members.find(member => member.presence.status === 'offline').size}`
+                `**Online:** ${members.find(member => member.presence.status === 'online').size || '0'}`,
+                `**Idle:** ${members.find(member => member.presence.status === 'idle').size || '0'}`,
+                `**Do Not Disturb:** ${members.find(member => member.presence.status === 'dnd').size || '0'}`,
+                `**Offline:** ${members.find(member => member.presence.status === 'offline').size || '0'}`
                 `\u200b`
             ])
             .addField(`Roles [${roles.length} - 1]`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None')
