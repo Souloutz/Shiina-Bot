@@ -23,7 +23,7 @@ module.exports = {
                 `**Discriminator:** ${member.user.discriminator}`,
                 `**ID:** ${member.id}`,
                 `**Avatar:** [Link to Avatar](${member.user.displayAvatarURL({ dynamic: true })})`,
-                `**Time Created:** ${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')}; ${moment(member.user.createdTimestamp).fromNow()}`,
+                `**Time Created:** ${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')}, ${moment(member.user.createdTimestamp).fromNow()}`,
                 `**Status:** ${member.user.presence.status}`,
                 `**Game:** ${member.user.presence.game || 'Not playing a game'}`,
                 `\u200b`
