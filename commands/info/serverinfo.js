@@ -37,7 +37,10 @@ module.exports = {
     description: 'Displays server info',
     aliases: ['server'],
     run: async(bot, message, args) => {
-        const roles = message.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());
+        const roles = message.guild.roles.cache
+            .sort((a, b) => b.position - a.position)
+            .map(role => role.toString())
+            .slice(0, -1);
         const members = message.guild.members.cache;
         const channels = message.guild.channels.cache;
         const emojis = message.guild.emojis.cache;
