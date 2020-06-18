@@ -37,10 +37,7 @@ module.exports = {
     description: 'Displays server info',
     aliases: ['server'],
     run: async(bot, message, args) => {
-        const roles = message.guild.roles.cache
-            .sort((a, b) => b.position - a.position)
-            .map(role => role.toString())
-            .slice(0, -1);
+        const roles = message.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());
         const members = message.guild.members.cache;
         const channels = message.guild.channels.cache;
         const emojis = message.guild.emojis.cache;
@@ -78,7 +75,7 @@ module.exports = {
                 `**Offline:** ${members.filter(member => member.presence.status === 'offline').size}`,
                 `\u200b`
             ])
-            .addField(`**Roles [${roles.length} - 1]:**`, `${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None'}`,)
+            .addField(`**Roles [${roles.length} - 1]:**`, `${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None'}`)
             .setFooter('Shiina | Developed by Souloutz#0038')
             .setTimestamp();
         return message.channel.send(Info);
