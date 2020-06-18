@@ -73,7 +73,6 @@ module.exports = {
             .addField('Presence', [
                 `**Online:** ${members.filter(member => member.presence.status === 'online').size}`,
                 `**Idle:** ${members.filter(member => member.presence.status === 'idle').size}`,
-                `**Do Not Disturb:** ${members.filter(member => member.presence.status === 'dnd').size}`,
                 `**Offline:** ${members.filter(member => member.presence.status === 'offline').size}`
                 `\u200b`
             ])
