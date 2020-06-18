@@ -15,6 +15,7 @@ module.exports = {
         const members = message.guild.members.cache
         const channels = message.guild.channels.cache
         const emojis = message.guild.emojis.cache
+        const regions = message.guild.region.cache
 
         const Info = new MessageEmbed()
             .setDescription(`**Information for __${message.guild.name}__**`)
