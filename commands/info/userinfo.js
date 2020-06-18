@@ -52,7 +52,7 @@ module.exports = {
         }
             
         let User = message.author;
-        const roles = User.roles.cache
+        const roles = message.member.roles.cache
             .sort((a, b) => b.position - a.position)
             .map(role => role.toString())
             .slice(0, -1);
