@@ -60,7 +60,7 @@ module.exports = {
             .addField('Discriminator', User.discriminator, true)            
             .addField('Status', User.presence.status, true)
             .addField('ID', User.id, true)
-            .addField('Roles', `<@&${User._roles.join('> <@&')}>`)
+            .addField('Roles', `<@&${User.roles.join('> <@&')}>`)
             .addField('Joined', moment.utc(message.member.joinedAt).format('ddd, MMMM Do, YYYY, hh:mm:ss A'))
             .addField('Registered', moment.utc(message.author.createdAt).format('ddd, MMMM Do, YYYY, hh:mm:ss A'))
             .setFooter('Shiina || Created by Souloutz#0038')
