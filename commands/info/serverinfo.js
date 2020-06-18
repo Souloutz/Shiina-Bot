@@ -40,8 +40,8 @@ module.exports = {
         const roles = message.guild.roles.cache
             .sort((a, b) => b.position - a.position)
             .map(role => role.toString());
-        const members = message.guild.members.cache.toString();
-        const channels = message.guild.channels.cache.toString();
+        const members = message.guild.members.cache;
+        const channels = message.guild.channels.cache;
         const emojis = message.guild.emojis.cache;
 
         const Info = new MessageEmbed()
@@ -63,18 +63,18 @@ module.exports = {
                 `**Role Count:** ${roles.length}`,
                 `**Emoji Count:** ${emojis.size}`,
                 `**Member Count:** ${message.guild.memberCount}`,
-                `**Humans:** ${message.guild.members.filter(member => !member.user.bot).size}`,
-                `**Bots:** ${message.guild.members.filter(member => member.user.bot).size}`,
-                `**Text Channels:** ${message.guild.channels.filter(channel => channel.type === 'text').size}`,
-                `**Voice Channels:** ${message.guild.channels.filter(channel => channel.type === 'voice').size}`,
+                `**Humans:** ${members.some(member => !member.user.bot).size}`,
+                `**Bots:** ${members.some(member => member.user.bot).size}`,
+                `**Text Channels:** ${channels.some(channel => channel.type === 'text').size}`,
+                `**Voice Channels:** ${channels.some(channel => channel.type === 'voice').size}`,
                 `**Boost Count:** ${message.guild.permiumSubscriptionCount || '0'}`,
                 `\u200b`
             ])
             .addField('Presence', [
-                `**Online:** ${message.guild.members.filter(member => member.presence.status === 'online').size}`,
-                `**Idle:** ${message.guild.members.filter(member => member.presence.status === 'idle').size}`,
-                `**Do Not Disturb:** ${message.guild.members.filter(member => member.presence.status === 'dnd').size}`,
-                `**Offline:** ${message.guild.members.filter(member => member.presence.status === 'offline').size}`
+                `**Online:** ${members.some(member => member.presence.status === 'online').size}`,
+                `**Idle:** ${members.some(member => member.presence.status === 'idle').size}`,
+                `**Do Not Disturb:** ${members.some(member => member.presence.status === 'dnd').size}`,
+                `**Offline:** ${members.some(member => member.presence.status === 'offline').size}`
                 `\u200b`
             ])
             .addField(`Roles [${roles.length} - 1]`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None')
