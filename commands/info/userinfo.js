@@ -34,7 +34,9 @@ module.exports = {
                 `**Hoist Role:** ${member.roles.hoist ? member.roles.hoist.name : 'None'}`,
                 `**Roles: [${roles.length}]:** ${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None'}`,
                 `\u200b`
-            ]);
+            ])
+            .setFooter(`Shiina | Developed by Souloutz#0038`)
+            .setTimestamp();
         return message.channel.send(Info);
     }
 };
