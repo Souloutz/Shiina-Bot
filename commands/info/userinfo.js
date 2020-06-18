@@ -11,63 +11,33 @@ module.exports = {
     usage: '[user]',
     aliases: ["user"],
     run: async(bot, message, args) => {
-        function getUserFromMention(mention) {
-            if (!mention) return;
-
-            if (mention.startsWith('<@') && mention.endsWith('>')) {
-                mention = mention.slice(2, -1);
-
-            if (mention.startsWith('!')) {
-                mention = mention.slice(1);
-            }
-
-            return bot.users.cache.get(mention);
-            }
-        }
-
-        if(args[0]){
-
-            const User = getUserFromMention(args[0]);
-
-            if(!User){
-                const Sorry = new MessageEmbed()
-                .setColor(colors.red_light)
-                .setDescription(`Sorry, couldn't find that user... Try again!`)
-                return message.channel.send(Sorry);
-            }
-            
-            const info = new MessageEmbed()
-                .setColor(colors.peach)
-                .setAuthor(User.tag, User.displayAvatarURL())
-                .setThumbnail(User.displayAvatarURL())
-                .addField('Username', User.username, true)
-                .addField('Discriminator', User.discriminator, true)            
-                .addField('Status', User.presence.status, true)
-                .addField('ID', User.id, true)
-                .addField('Joined', moment.utc(User.joinedAt).format('ddd, MMMM Do, YYYY, hh:mm:ss A'))
-                .addField('Registered', moment.utc(User.createdAt).format('ddd, MMMM Do, YYYY, hh:mm:ss A'))
-                .setFooter('Shiina || Created by Souloutz#0038')
-            return message.channel.send(info);
-    
-        }
-            
-        let User = message.author;
-        const roles = message.member.roles.cache
+        const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.author;
+        const roles = member.roles.cache
             .sort((a, b) => b.position - a.position)
             .map(role => role.toString())
             .slice(0, -1);
-        const info = new MessageEmbed()
+        const userflags = member.user.flags.toArray();
+        const Info = new MessageEmbed()
+            .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512}))
             .setColor(colors.peach)
-            .setAuthor(User.tag, User.displayAvatarURL())
-            .setThumbnail(User.displayAvatarURL())
-            .addField('Username', User.username, true)
-            .addField('Discriminator', User.discriminator, true)            
-            .addField('Status', User.presence.status, true)
-            .addField('ID', User.id, true)
-            .addField('Joined', moment.utc(message.member.joinedAt).format('ddd, MMMM Do, YYYY, hh:mm:ss A'))
-            .addField('Registered', moment.utc(message.author.createdAt).format('ddd, MMMM Do, YYYY, hh:mm:ss A'))
-            .addField(`Roles [${roles.length}]`, `${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None'}`)
-            .setFooter('Shiina || Created by Souloutz#0038')
-        return message.channel.send(info);
+            .addField('User', [
+                `**> Username:** ${member.user.username}`,
+                `**> Discriminator:** ${member.user.discriminator}`,
+                `**> ID:** ${member.id}`,
+                `**> Flags:** ${userflags.length ? userflags.map(flag => flags[flags]).join(', ') : 'None'}`,
+                `**> Avatar:** [Link to Avatar](${member.user.displayAvatarURL({ dynamic: true })})`,
+                `**> Time Created:** ${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')} ${moment(member.user.createdTimestamp).fromNow()}`,
+                `**> Status:** ${member.user.presence.status}`,
+                `**> Game:** ${member.user.presence.game || 'Not playing a game'}`,
+                `\u200b`
+            ])
+            .addField('Member', [
+                `**> Highest Role:** ${member.roles.highest.id === message.guild.id ? 'None' : member.roles.highest.name}`,
+                `**> Server Join Date:** ${moment(member.joinedAt).format('LL LTS')}`,
+                `**> Hoist Role:** ${member.roles.hoist ? member.roles.hoist.name : 'None'}`,
+                `**> Roles: [${roles.length}]:** ${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None'}`,
+                `\u200b`
+            ]);
+        return message.channel.send(Info);
     }
 };
