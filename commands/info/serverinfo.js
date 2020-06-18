@@ -40,9 +40,9 @@ module.exports = {
         const roles = message.guild.roles.cache
             .sort((a, b) => b.position - a.position)
             .map(role => role.toString());
-        const members = message.guild.members.cache
-        const channels = message.guild.channels.cache
-        const emojis = message.guild.emojis.cache
+        const members = message.guild.members.cache;
+        const channels = message.guild.channels.cache;
+        const emojis = message.guild.emojis.cache;
 
         const Info = new MessageEmbed()
             .setDescription(`**Information for __${message.guild.name}__**`)
