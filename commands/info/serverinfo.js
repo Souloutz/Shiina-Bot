@@ -63,18 +63,18 @@ module.exports = {
                 `**Role Count:** ${roles.length}`,
                 `**Emoji Count:** ${emojis.size}`,
                 `**Member Count:** ${message.guild.memberCount}`,
-                `**Humans:** ${message.guild.members.cache.some(member => !member.user.bot).size}`,
-                `**Bots:** ${message.guild.members.cache.some(member => member.user.bot).size}`,
-                `**Text Channels:** ${message.guild.channels.cache.some(channel => channel.type === 'text').size}`,
-                `**Voice Channels:** ${message.guild.channels.cache.some(channel => channel.type === 'voice').size}`,
+                `**Humans:** ${(!message.guild.members.user.bot).size}`,
+                `**Bots:** ${(message.guild.members.user.bot).size}`,
+                `**Text Channels:** ${(message.guild.channels.type === 'text').size}`,
+                `**Voice Channels:** ${(message.guild.channels.type === 'voice').size}`,
                 `**Boost Count:** ${message.guild.permiumSubscriptionCount || '0'}`,
                 `\u200b`
             ])
             .addField('Presence', [
-                `**Online:** ${message.guild.members.cache.some(member => member.presence.status === 'online').size}`,
-                `**Idle:** ${message.guild.members.cache.some(member => member.presence.status === 'idle').size}`,
-                `**Do Not Disturb:** ${message.guild.members.cache.some(member => member.presence.status === 'dnd').size}`,
-                `**Offline:** ${message.guild.members.cache.some(member => member.presence.status === 'offline').size}`
+                `**Online:** ${(message.guild.members.presence.status === 'online').size}`,
+                `**Idle:** ${(message.guild.members.presence.status === 'idle').size}`,
+                `**Do Not Disturb:** ${(message.guild.members.presence.status === 'dnd').size}`,
+                `**Offline:** ${(message.guild.members.presence.status === 'offline').size}`
                 `\u200b`
             ])
             .addField(`Roles [${roles.length} - 1]`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None')
