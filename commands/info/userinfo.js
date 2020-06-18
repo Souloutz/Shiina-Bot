@@ -62,6 +62,7 @@ module.exports = {
             .addField('ID', User.id, true)
             .addField('Joined', moment.utc(message.member.joinedAt).format('ddd, MMMM Do, YYYY, hh:mm:ss A'))
             .addField('Registered', moment.utc(message.author.createdAt).format('ddd, MMMM Do, YYYY, hh:mm:ss A'))
+            .addField(`Roles [${roles.length}]`, `${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None'}`)
             .setFooter('Shiina || Created by Souloutz#0038')
         return message.channel.send(info);
     }
