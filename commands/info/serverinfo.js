@@ -63,18 +63,18 @@ module.exports = {
                 `**Role Count:** ${roles.length}`,
                 `**Emoji Count:** ${emojis.size}`,
                 `**Member Count:** ${message.guild.memberCount}`,
-                `**Humans:** ${members.get(member => !member.user.bot).size}`,
-                `**Bots:** ${members.get(member => member.user.bot).size}`,
-                `**Text Channels:** ${channels.get(channel => channel.type === 'text').size}`,
-                `**Voice Channels:** ${channels.get(channel => channel.type === 'voice').size}`,
+                `**Humans:** ${members.get(member => !member.user.bot).toString()}`,
+                `**Bots:** ${members.get(member => member.user.bot).toString()}`,
+                `**Text Channels:** ${channels.get(channel => channel.type === 'text').toString()}`,
+                `**Voice Channels:** ${channels.get(channel => channel.type === 'voice').toString()}`,
                 `**Boost Count:** ${message.guild.permiumSubscriptionCount || '0'}`,
                 `\u200b`
             ])
             .addField('Presence', [
-                `**Online:** ${members.get(member => member.presence.status === 'online').size}`,
-                `**Idle:** ${members.get(member => member.presence.status === 'idle').size}`,
-                `**Do Not Disturb:** ${members.get(member => member.presence.status === 'dnd').size}`,
-                `**Offline:** ${members.get(member => member.presence.status === 'offline').size}`
+                `**Online:** ${members.get(member => member.presence.status === 'online').toString()}`,
+                `**Idle:** ${members.get(member => member.presence.status === 'idle').toString()}`,
+                `**Do Not Disturb:** ${members.get(member => member.presence.status === 'dnd').toString()}`,
+                `**Offline:** ${members.get(member => member.presence.status === 'offline').toString()}`
                 `\u200b`
             ])
             .addField(`Roles [${roles.length} - 1]`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None')
