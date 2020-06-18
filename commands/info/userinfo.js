@@ -1,7 +1,7 @@
 const {MessageEmbed} = require("discord.js");
 const colors = require("../../colors.json");
 const moment = require('moment');
-require('moment-duration-format')
+require('moment-duration-format');
 
 module.exports = {
     name: 'userinfo',
