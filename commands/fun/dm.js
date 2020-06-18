@@ -11,7 +11,7 @@ module.exports = {
 
         if(!args[0]) return message.channel.send('Please specify a user to message!');
         const member = message.guild.members.cache.get(args[0]) || message.mentions.members.first() || await bot.users.fetch(args[0]);
-        if(member !== message.guild.members) return message.channel.send('That is not a valid user in the server! Try again!');
+        if(!member) return message.channel.send('That is not a valid user in the server! Try again!');
         if(member === member.user.bot) return message.channel.send('You can not send messages to bots!');
 
 
