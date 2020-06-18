@@ -16,6 +16,8 @@ module.exports = {
         const channels = message.guild.channels.cache
         const emojis = message.guild.emojis.cache
         const regions = message.guild.region.cache
+        const filterLevels = message.guild.explicitContentFilter.cache
+        const verificationLevels = message.guild.verificationLevel.cache
 
         const Info = new MessageEmbed()
             .setDescription(`**Information for __${message.guild.name}__**`)
@@ -27,8 +29,8 @@ module.exports = {
                 `**Owner:** ${message.guild.owner.user.tag} (${message.guild.ownerID})`,
                 `**Region:** ${regions}}`,
                 `**Boost Tier:** ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
-                `**Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}`,
-                `**Verification Level:** ${verificationLevels[message.guild.verificationLevel]}`,
+                `**Explicit Filter:** ${filterLevels}`,
+                `**Verification Level:** ${verificationLevels}`,
                 `**Time Created:** ${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} ${moment(message.guild.createdTimestamp).fromNow()}`,
                 `\u200b`
             ])
