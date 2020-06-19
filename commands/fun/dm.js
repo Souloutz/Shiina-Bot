@@ -10,9 +10,12 @@ module.exports = {
         if(!permissions) return message.channel.send('You do not have permission to execute this command!');
 
         if(!args[0]) return message.channel.send('Please specify a user to message!');
-        const member = message.guild.members.cache.get(args[0]) || message.mentions.members.first() || await bot.users.fetch(args[0]);
-        if(!member) return message.channel.send('That is not a user in the server! Try again!');
-
+        const members = message.guild.members.cache
+        const bots = members.filter(member =>  member.user.bot)
+        const user = message.guild.members.cache.get(args[0]) || message.mentions.members.first() || await bot.users.fetch(args[0]);
+        if(!user) return message.channel.send('That is not a user in the server! Try again!');
+        if(user === bots) return message.channel.send('You can not send a message to a bot!');
+        
         if(!args[1]) return message.channel.send('Please supply a message!');
         const dmmessage = args.slice(1, ).join(" ");
         if(!dmmessage) return message.channel.send('Please supply a message!');
