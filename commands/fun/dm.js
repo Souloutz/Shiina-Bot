@@ -9,23 +9,30 @@ module.exports = {
         if(!permissions) return message.channel.send('You do not have permission to execute this command!');
 
         if(!args[0]) return message.channel.send('Please specify a user to message!');
-        const members = message.guild.members.cache
-        const bots = members.filter(member =>  member.user.bot)
         const user = message.guild.members.cache.get(args[0]) || message.mentions.members.first() || await bot.users.fetch(args[0]);
-        if(user.id === bots.id) return message.channel.send('You can not send a message to a bot!');
         if(!user) return message.channel.send('That is not a user in the server! Try again!');
         
         if(!args[1]) return message.channel.send('Please supply a message!');
         const dmmessage = args.slice(1, ).join(" ");
         if(!dmmessage) return message.channel.send('Please supply a message!');
 
-        user.send(`${dmmessage}`);
-        message.channel.send('Message Sent!')
+        try {
+            user.send(`${dmmessage}`);
+            message.channel.send('Message Sent!')
 
-        async function Wait() {
-            message.channel.bulkDelete(2);
-        };
+            async function Wait() {
+                message.channel.bulkDelete(2);
+            };
+    
+            setTimeout(Wait, 1500);
+        } catch {
+            message.channel.send('There was an error sending the message! Please make sure that the user is correct is and is not a bot!');
+            
+            async function Wait() {
+                message.channel.bulkDelete(2);
+            }
 
-        setTimeout(Wait, 1500);
+            setTimeout(Wait, 10000);
+        }
     }
 }
