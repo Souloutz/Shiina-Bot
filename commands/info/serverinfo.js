@@ -46,16 +46,16 @@ module.exports = {
         const emojis = message.guild.emojis.cache;
 
         const Info = new MessageEmbed()
-            .setDescription(`**Information for __${message.guild.name}__**`)
+            .setDescription(`**Information for \`\`\`${message.guild.name}\`\`\`**`)
             .setColor(colors.peach)
             .setThumbnail(message.guild.iconURL({ dynamic: true }))
             .addField('General', [
                 `**Name:** ${message.guild.name}`,
                 `**ID:** ${message.guild.id}`,
-                `**Owner:** ${message.guild.owner.user.tag} (${message.guild.ownerID})`,
+                `**Owner:** ${message.guild.owner.user.tag}, <${message.guild.ownerID}>`,
                 `**Region:** ${regions[message.guild.region]}`,
                 `**Boost Tier:** ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
-                `**Time Created:** ${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} ${moment(message.guild.createdTimestamp).fromNow()}`,
+                `**Time Created:** ${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')}, ${moment(message.guild.createdTimestamp).fromNow()}`,
                 `\u200b`
             ])
             .addField('Presence', [
