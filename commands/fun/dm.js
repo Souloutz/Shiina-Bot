@@ -10,7 +10,8 @@ module.exports = {
         if(!permissions) return message.channel.send('You do not have permission to execute this command!');
 
         if(!args[0]) return message.channel.send('Please specify a user to message!');
-        const member = message.guild.members.cache.get(args[0]) || message.mentions.members.first() || await bot.users.fetch(args[0]);
+        const member = message.guild.members.cache.get(args[0]) || message.mentions.members.first() || bot.users.fetch(args[0]);
+        console.log(member);
         if(isNaN(member)) return message.channel.send('That is not a valid user!');
         if(!member) return message.channel.send('That is not a user in the server!');
 
