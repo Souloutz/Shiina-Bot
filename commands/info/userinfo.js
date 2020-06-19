@@ -3,6 +3,13 @@ const colors = require("../../colors.json");
 const moment = require('moment');
 require('moment-duration-format');
 
+const status = {
+    online: 'Online',
+    idle: 'Idle',
+    dnd: 'Do Not Disturb',
+    offline: 'Offline'
+};
+
 module.exports = {
     name: 'userinfo',
     category: 'info',
@@ -24,13 +31,13 @@ module.exports = {
                 `**ID:** ${member.id}`,
                 `**Avatar:** [Link to Avatar](${member.user.displayAvatarURL({ dynamic: true })})`,
                 `**Time Created:** ${moment(member.user.createdTimestamp).format('LT')} ${moment(member.user.createdTimestamp).format('LL')}, ${moment(member.user.createdTimestamp).fromNow()}`,
-                `**Status:** ${member.user.presence.status}`,
+                `**Status:** ${status[message.member.user.presence.status]}`,
                 `**Game:** ${member.user.presence.game || 'Not playing a game'}`,
                 `\u200b`
             ])
             .addField('Member', [
-                `**Highest Role:** ${member.roles.highest.id === message.guild.id ? 'None' : member.roles.highest.name}`,
                 `**Server Join Date:** ${moment(member.joinedAt).format('LL LTS')}`,
+                `**Highest Role:** ${member.roles.highest.id === message.guild.id ? 'None' : member.roles.highest.name}`,
                 `**Hoist Role:** ${member.roles.hoist ? member.roles.hoist.name : 'None'}`,
                 `**Roles: [${roles.length}]:** ${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? (roles) : 'None'}`,
                 `\u200b`
