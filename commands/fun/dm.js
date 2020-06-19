@@ -1,10 +1,9 @@
-const {ownerID} = require('../../config.json');
-
 module.exports = {
     name: 'dm',
     category: 'fun',
     description: 'Message a user with your message',
     usage: '<user> <message>',
+    timout: 10000,
     run: async(bot, message, args) => {
         const permissions = message.member.hasPermission("MANAGE_MESSAGES");
         if(!permissions) return message.channel.send('You do not have permission to execute this command!');
