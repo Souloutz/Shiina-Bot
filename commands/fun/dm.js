@@ -20,11 +20,11 @@ module.exports = {
         const dmmessage = args.slice(1, ).join(" ");
         if(!dmmessage) return message.channel.send('Please supply a message!');
 
-        member.send(`${dmmessage}`);
-        const Delivered = await message.channel.send('Message Sent!')
+        user.send(`${dmmessage}`);
+        message.channel.send('Message Sent!')
 
         async function Wait() {
-            Delivered.delete();
+            message.channel.bulkDelete(2);
         };
 
         setTimeout(Wait, 1500);
