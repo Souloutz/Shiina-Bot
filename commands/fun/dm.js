@@ -11,7 +11,8 @@ module.exports = {
 
         if(!args[0]) return message.channel.send('Please specify a user to message!');
         const member = message.guild.members.cache.get(args[0]) || message.mentions.members.first() || await bot.users.fetch(args[0]);
-        if(!member) return message.channel.send('That is not a user in the server! Try again!');
+        if(isNaN(member)) return message.channel.send('That is not a valid user!');
+        if(!member) return message.channel.send('That is not a user in the server!');
 
         if(!args[1]) return message.channel.send('Please supply a message!');
         const dmmessage = args.slice(1, ).join(" ");
