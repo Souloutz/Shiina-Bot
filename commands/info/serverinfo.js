@@ -54,8 +54,7 @@ module.exports = {
             .addField('General', [
                 `**Name:** ${message.guild.name}`,
                 `**ID:** ${message.guild.id}`,
-                `**Owner:** ${message.guild.owner.user.tag},` 
-                `**ID: ${message.guild.owner.id}`,
+                `**Owner:** ${message.guild.owner.user.tag},\n**ID:** ${message.guild.ownerID}`,
                 `**Region:** ${regions[message.guild.region]}`,
                 `**Boost Tier:** ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
                 `**Time Created:** ${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')}, ${moment(message.guild.createdTimestamp).fromNow()}`,
