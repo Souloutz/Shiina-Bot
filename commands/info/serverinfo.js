@@ -69,6 +69,7 @@ module.exports = {
                 `**Text Channels:** ${channels.filter(channel => channel.type === 'text').size}`,
                 `**Voice Channels:** ${channels.filter(channel => channel.type === 'voice').size}`,
                 `**Boost Count:** ${message.guild.permiumSubscriptionCount || '0'}`,
+                `**Roles [${roles.length}]:** ${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? (roles) : 'None'}`,
                 `\u200b`
             ])
             .addField('Presence', [
@@ -78,7 +79,6 @@ module.exports = {
                 `**Offline:** ${members.filter(member => member.presence.status === 'offline').size}`,
                 `\u200b`
             ])
-            .addField(`**Roles [${roles.length}]:**`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? (roles) : 'None')
             .setFooter('Shiina | Developed by Souloutz#0038')
             .setTimestamp();
         return message.channel.send(Info);
