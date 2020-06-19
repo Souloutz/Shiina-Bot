@@ -13,8 +13,8 @@ const verificationLevels = {
 	NONE: 'None',
 	LOW: 'Low',
 	MEDIUM: 'Medium',
-	HIGH: '(╯°□°）╯︵ ┻━┻',
-	VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'
+	HIGH: '(╯°□°）╯︵ ┻━┻ (High)',
+	VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻ (Very High)'
 };
 
 const regions = {
