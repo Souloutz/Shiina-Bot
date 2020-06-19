@@ -44,7 +44,6 @@ module.exports = {
         const members = message.guild.members.cache;
         const channels = message.guild.channels.cache;
         const emojis = message.guild.emojis.cache;
-        const displayRole = roles.length < 10 ? roles.join(', ') : roles.length > 10 ? (roles) : 'None';
 
         const Info = new MessageEmbed()
             .setDescription(`**Information for __${message.guild.name}__**`)
@@ -73,7 +72,7 @@ module.exports = {
                 `**Text Channels:** ${channels.filter(channel => channel.type === 'text').size}`,
                 `**Voice Channels:** ${channels.filter(channel => channel.type === 'voice').size}`,
                 `**Emoji Count:** ${emojis.size}`,
-                `**Roles: [${roles.length}]:** ${displayRole.toString()}`,
+                `**Roles:** ${roles.length}`,
                 `\u200b`
             ])
             .setFooter('Shiina | Developed by Souloutz#0038')
@@ -87,4 +86,7 @@ module.exports = {
 `**Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}`,
 `**Verification Level:** ${verificationLevels[message.guild.verificationLevel]}`,
  `**Boost Count:** ${message.guild.permiumSubscriptionCount || '0'}`,
+
+const displayRole = roles.length < 10 ? roles.join(', ') : roles.length > 10 ? (roles) : 'None';
+ `**Roles: [${roles.length}]:** ${displayRole.toString()}`,
 */
