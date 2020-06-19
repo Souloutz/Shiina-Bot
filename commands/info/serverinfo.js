@@ -13,8 +13,8 @@ const verificationLevels = {
 	NONE: 'None',
 	LOW: 'Low',
 	MEDIUM: 'Medium',
-	HIGH: '(╯°□°）╯︵ ┻━┻ (High)',
-	VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻ (Very High)'
+	HIGH: '(╯°□°）╯︵ ┻━┻',
+	VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'
 };
 
 const regions = {
@@ -48,7 +48,7 @@ module.exports = {
         const emojis = message.guild.emojis.cache;
 
         const Info = new MessageEmbed()
-            .setDescription(`**Information for \`${message.guild.name}\`**`)
+            .setDescription(`**${message.guild.name}**`)
             .setColor(colors.peach)
             .setThumbnail(message.guild.iconURL({ dynamic: true }))
             .addField('General', [
