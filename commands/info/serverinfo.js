@@ -55,8 +55,6 @@ module.exports = {
                 `**Owner:** ${message.guild.owner.user.tag} (${message.guild.ownerID})`,
                 `**Region:** ${regions[message.guild.region]}`,
                 `**Boost Tier:** ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
-                `**Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}`,
-                `**Verification Level:** ${verificationLevels[message.guild.verificationLevel]}`,
                 `**Time Created:** ${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} ${moment(message.guild.createdTimestamp).fromNow()}`,
                 `\u200b`
             ])
@@ -68,14 +66,12 @@ module.exports = {
                 `\u200b`
             ])
             .addField('Statistics', [
-                `**Role Count:** ${roles.length}`,
-                `**Emoji Count:** ${emojis.size}`,
                 `**Member Count:** ${message.guild.memberCount}`,
                 `**Humans:** ${members.filter(member => !member.user.bot).size}`,
                 `**Bots:** ${members.filter(member => member.user.bot).size}`,
                 `**Text Channels:** ${channels.filter(channel => channel.type === 'text').size}`,
                 `**Voice Channels:** ${channels.filter(channel => channel.type === 'voice').size}`,
-                `**Boost Count:** ${message.guild.permiumSubscriptionCount || '0'}`,
+                `**Emoji Count:** ${emojis.size}`,
                 `**Roles [${roles.length}]:** ${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? (roles) : 'None'}`,
                 `\u200b`
             ])
@@ -86,3 +82,8 @@ module.exports = {
 };
 
 
+/*
+`**Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}`,
+`**Verification Level:** ${verificationLevels[message.guild.verificationLevel]}`,
+ `**Boost Count:** ${message.guild.permiumSubscriptionCount || '0'}`,
+*/
