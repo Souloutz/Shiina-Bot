@@ -16,11 +16,10 @@ module.exports = {
 
         if (amount > 100) return message.channel.send('You can\'t delete more than 100 messages at once!'); 
         if (amount < 1) return message.channel.send('You have to delete at least 1 message!');
-        amount++;
 
         await message.channel.messages.fetch({ limit : amount }).then(messages => { // Fetches the messages
-            messages--;
-            message.channel.bulkDelete(messages);
+            message.channel.bulkDelete(1);
+            message.channel.bulkDelete(amount);
         });
     }
 }
