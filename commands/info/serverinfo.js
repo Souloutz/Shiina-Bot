@@ -8,6 +8,7 @@ const filterLevels = {
 	MEMBERS_WITHOUT_ROLES: 'No Role',
 	ALL_MEMBERS: 'Everyone'
 };
+
 const verificationLevels = {
 	NONE: 'None',
 	LOW: 'Low',
@@ -15,6 +16,7 @@ const verificationLevels = {
 	HIGH: '(╯°□°）╯︵ ┻━┻',
 	VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'
 };
+
 const regions = {
 	brazil: 'Brazil',
 	europe: 'Europe',
@@ -46,7 +48,7 @@ module.exports = {
         const emojis = message.guild.emojis.cache;
 
         const Info = new MessageEmbed()
-            .setDescription(`**Information for \`\`\`${message.guild.name}\`\`\`**`)
+            .setDescription(`**Information for \`${message.guild.name}\`**`)
             .setColor(colors.peach)
             .setThumbnail(message.guild.iconURL({ dynamic: true }))
             .addField('General', [
@@ -56,6 +58,8 @@ module.exports = {
                 `**Region:** ${regions[message.guild.region]}`,
                 `**Boost Tier:** ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
                 `**Time Created:** ${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')}, ${moment(message.guild.createdTimestamp).fromNow()}`,
+                `**Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}`,
+                `**Verification Level:** ${verificationLevels[message.guild.verificationLevel]}`,
                 `\u200b`
             ])
             .addField('Presence', [
@@ -73,6 +77,7 @@ module.exports = {
                 `**Voice Channels:** ${channels.filter(channel => channel.type === 'voice').size}`,
                 `**Emoji Count:** ${emojis.size}`,
                 `**Roles:** ${roles.length}`,
+                `**Boost Count:** ${message.guild.permiumSubscriptionCount || '0'}`,
                 `\u200b`
             ])
             .setFooter('Shiina | Developed by Souloutz#0038')
@@ -83,10 +88,6 @@ module.exports = {
 
 
 /*
-`**Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}`,
-`**Verification Level:** ${verificationLevels[message.guild.verificationLevel]}`,
- `**Boost Count:** ${message.guild.permiumSubscriptionCount || '0'}`,
-
 const displayRole = roles.length < 10 ? roles.join(', ') : roles.length > 10 ? (roles) : 'None';
  `**Roles: [${roles.length}]:** ${displayRole.toString()}`,
 */
