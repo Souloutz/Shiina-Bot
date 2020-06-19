@@ -20,7 +20,7 @@ module.exports = {
         await message.channel.messages.fetch({ limit : amount }).then(messages => { // Fetches the messages
             message.channel.bulkDelete(1);
 
-            await async function Wait() {
+            function Wait() {
                 message.channel.bulkDelete(messages)
             }
             
