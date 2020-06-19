@@ -72,7 +72,7 @@ module.exports = {
                 `**Text Channels:** ${channels.filter(channel => channel.type === 'text').size}`,
                 `**Voice Channels:** ${channels.filter(channel => channel.type === 'voice').size}`,
                 `**Emoji Count:** ${emojis.size}`,
-                `**Roles [${roles.length}]:** ${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? (roles) : 'None'}`,
+                `**Roles: [${roles.length}]:** ${roles.length < 10 ? roles.join(', ') : roles.length > 10 ? (roles) : 'None'}`,
                 `\u200b`
             ])
             .setFooter('Shiina | Developed by Souloutz#0038')
