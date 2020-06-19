@@ -18,8 +18,8 @@ module.exports = {
         if (amount < 1) return message.channel.send('You have to delete at least 1 message!');
 
         await message.channel.messages.fetch({ limit : amount }).then(messages => { // Fetches the messages
-            message.channel.bulkDelete(1);
             message.channel.bulkDelete(amount);
+            message.channel.bulkDelete(1);
         });
     }
 }
